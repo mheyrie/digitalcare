@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import CustomFormField from "../CustomFormField";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -36,6 +37,8 @@ const PatientForm = () => {
             Schedule your first appointment
           </p>
         </section>
+
+        <CustomFormField  control={form.control} />
 
         <Button type="submit">Submit</Button>
       </form>
