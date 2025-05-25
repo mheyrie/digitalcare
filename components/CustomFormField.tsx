@@ -2,7 +2,6 @@
 "use client";
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -12,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Control } from "react-hook-form";
 import { FormFieldType } from "./forms/PatientForm";
 import React from "react";
+import Image from "next/image";
 
 interface CustomProps {
   control: Control<any>;
@@ -29,7 +29,32 @@ interface CustomProps {
 }
 
 const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
-  return <Input type="text" placeholder="Hannah Montana" />;
+  const { fieldType, iconSrc, iconAlt, placeholder } = props;
+  switch (fieldType) {
+    case FormFieldType.INPUT:
+      return (
+        <div className="flex rounded-md border dark:border-dark-500 dark:bg-dark-400 border-gray-300 bg-gray-200">
+          {props.iconSrc && (
+            <Image
+              src={iconSrc || "/placeholder-icon.png"}
+              alt={iconAlt || "Icon"}
+              width={24}
+              height={24}
+              className="ml-2"
+            />
+          )}
+          <FormControl>
+            <Input
+              placeholder={placeholder}
+              {...field}
+              className="shad-input border-0"
+            />
+          </FormControl>
+        </div>
+      );
+    default:
+      break;
+  }
 };
 const CustomFormField = (props: CustomProps) => {
   const {
