@@ -9,17 +9,20 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Control } from "react-hook-form";
+import { FormFieldType } from "./forms/PatientForm";
 
 interface CustomProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
+  fieldType:FormFieldType
+
 }
 
-const CustomFormField = ({control}: CustomProps) => {
+const CustomFormField = ({control, fieldType, name}: CustomProps) => {
   return (
     <FormField
       control={control}
-      name="username"
+      name={name}
       render={({ field }) => (
         <FormItem>
           <FormLabel>Username</FormLabel>
