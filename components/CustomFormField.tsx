@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import {
   FormControl,
@@ -10,27 +11,44 @@ import {
 import { Input } from "@/components/ui/input";
 import { Control } from "react-hook-form";
 import { FormFieldType } from "./forms/PatientForm";
+import React from "react";
 
 interface CustomProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   fieldType:FormFieldType
+    name: string;
+    label?: string ;
+    placeholder?: string;
+    iconSrc?: string;
+    iconAlt?: string;
+    disable?: boolean;
+    dateFormat?: string;
+    showTimeSelect?: boolean;
+    children?: React.ReactNode;
+    renderSkeleton?: (field:any)=> React.ReactNode;
 
 }
 
-const CustomFormField = ({control, fieldType, name}: CustomProps) => {
+const RenderField = ({field, props}: {field:any, props:CustomProps})=>{
+    return (
+        <Input
+        type='text'
+       placeholder="Hannah Montana"
+        />
+    );
+}
+const CustomFormField = (props: CustomProps) => {
+    const { control, fieldType, name, label, placeholder, iconSrc, iconAlt, disable, dateFormat, showTimeSelect } = props;
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
-          <FormLabel>Username</FormLabel>
-          <FormControl>
-            <Input placeholder="shadcn" {...field} />
-          </FormControl>
-          <FormDescription>This is your public display name.</FormDescription>
-          <FormMessage />
+        <FormItem className="flex-1">{fieldType !== FormFieldType.CHECKBOX && label &&(
+            <FormLabel>{label}</FormLabel>
+        )}
+<RenderField field={field} props={props}/>
+          
         </FormItem>
       )}
     />
