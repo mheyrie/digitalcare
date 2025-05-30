@@ -1,3 +1,5 @@
+import * as sdk from 'node-appwrite';
+
 const {
   PROJECT_ID,
   DATABASE_ID,
