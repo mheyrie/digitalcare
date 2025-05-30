@@ -10,4 +10,4 @@ const {
 } = process.env;
 
 
-const client
+const client new sdk.Client();
