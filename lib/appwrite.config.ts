@@ -13,3 +13,5 @@ const {
 
 
 const client = new sdk.Client();
+
+client.setEndpoint(ENDPOINT || 'https://cloud.appwrite.io/v1') // Your API Endpoint
