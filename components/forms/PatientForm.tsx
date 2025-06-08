@@ -40,17 +40,15 @@ const PatientForm = () => {
     const { name, email, phone } = values; // TODO: continue here
     setIsLoading(true);
     try {
-      // const userData = { name, email, phone };
+      const userData = { name, email, phone };
 
-      // const user = await createUser(userData);
-      // if (user) router.push(`/patients/${user.$id}/register`);
+      const user = await createUser(userData);
+      if (user) router.push(`/patients/${user.$id}/register`);
 
 
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
   }
   return (
