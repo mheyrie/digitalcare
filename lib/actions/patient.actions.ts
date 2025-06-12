@@ -7,6 +7,7 @@ export const createUser = async (user: CreateUserParams) => {
       const existingUser = await users.list([
         Query.equal("email", [user.email]),
       ]);
+      return existingUser?.users[0]
     }
   }
 };
