@@ -1,3 +1,5 @@
+ "use server"
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ID, Query } from "node-appwrite";
 import { users } from "../appwrite.config";
