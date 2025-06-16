@@ -7,10 +7,10 @@ const Register = () => {
             <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
                 <Image
                     src="/assets/icon/logo.svg"
-                    alt="Logo"
-                    width={150}
-                    height={50}
-                    className="mb-6"
+                    alt="Digital care"
+                    width={1000}
+                    height={1000}
+                    className="mb-12 h-10 w-fit"
                 />
             </div>
         </section>
