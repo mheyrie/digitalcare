@@ -1,6 +1,10 @@
 const Register = () => {
   return (
-    <div>Register</div>
+    <div className="flex h-screen max-h-screen">
+        <section className="remove-scrollbar container">
+            
+        </section>
+    </div>
   )
 }
 export default Register
