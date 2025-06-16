@@ -1,8 +1,18 @@
+import Image from "next/image"
+
 const Register = () => {
   return (
     <div className="flex h-screen max-h-screen">
         <section className="remove-scrollbar container">
-            <div className="sub-container max-w-[860px] flex-1"></div>
+            <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
+                <Image
+                    src="/assets/images/logo.svg"
+                    alt="Logo"
+                    width={150}
+                    height={50}
+                    className="mb-6"
+                />
+            </div>
         </section>
     </div>
   )
