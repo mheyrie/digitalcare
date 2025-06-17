@@ -62,23 +62,6 @@ const RegisterForm = ({user}: {user:User}) => {
           iconAlt="User Icon"
         />
 
-        <CustomFormField
-          fieldType={FormFieldType.INPUT}
-          name="email"
-          label="Email:"
-          placeholder="janedoe@gmail.com"
-          control={form.control}
-          iconSrc="/assets/icons/email.svg"
-          iconAlt="Email Icon"
-        />
-
-        <CustomFormField
-          fieldType={FormFieldType.PHONE_INPUT}
-          name="phone"
-          label="Phone Number:"
-          placeholder="(555) 123-4355"
-          control={form.control}
-        />
 
         <SubmitButton isLoading={isLoading}> Get Started</SubmitButton>
       </form>
