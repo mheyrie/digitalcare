@@ -41,7 +41,7 @@ const Register = () => {
         height={1000}
         src="/assets/images/register-img.png"
         alt="patient onboarding"
-        className="side-img max-w-[390px]"
+        className="side-img max-w-[50%]"
         // loading="eager"
         // fetchPriority="high"
         // priority
