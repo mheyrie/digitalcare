@@ -1,3 +1,4 @@
+import RegisterForm from "@/components/forms/RegisterForm";
 import { ModeToggle } from "@/components/ModeToggle";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +22,7 @@ const Register = () => {
             <span className="text-sm italic mt-2 font-semibold">We Care</span>
           </div>
           {/* Form  */}
-          {/* <PatientForm /> */}
+          <RegisterForm />
 
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
