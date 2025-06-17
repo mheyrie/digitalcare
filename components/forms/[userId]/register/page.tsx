@@ -1,4 +1,6 @@
+import { ModeToggle } from "@/components/ModeToggle";
 import Image from "next/image";
+import Link from "next/link";
 
 const Register = () => {
   return (
@@ -19,7 +21,7 @@ const Register = () => {
             <span className="text-sm italic mt-2 font-semibold">We Care</span>
           </div>
           {/* Form  */}
-          <PatientForm />
+          {/* <PatientForm /> */}
 
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
@@ -37,12 +39,12 @@ const Register = () => {
       <Image
         width={1000}
         height={1000}
-        src="/assets/images/onboarding-img.png"
+        src="/assets/images/register-img.png"
         alt="patient onboarding"
-        className="side-img max-w-[50%] hidden lg:block"
-        loading="eager"
-        fetchPriority="high"
-        priority
+        className="side-img max-w-[390px]"
+        // loading="eager"
+        // fetchPriority="high"
+        // priority
       />
     </div>
   );
