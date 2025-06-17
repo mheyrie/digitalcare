@@ -44,11 +44,11 @@ const RegisterForm = ({user}: {user:User}) => {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
-        <section className="mb-12 space-y-4">
-          <h1 className="header">Hi There 👋👋🏼</h1>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
+        <section className="space-y-4">
+          <h1 className="header">Welcome 👋👋🏼</h1>
           <p className="text-dark-300 dark:text-dark-700">
-            Schedule your first appointment
+           Let us know a bit about you to get started
           </p>
         </section>
 

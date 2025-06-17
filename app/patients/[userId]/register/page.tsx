@@ -44,7 +44,7 @@ const Register = async ({params: {userId}}: SearchParamProps) => {
         height={1000}
         src="/assets/images/register-img.png"
         alt="patient onboarding"
-        className="side-img max-w-[50%]"
+        className="side-img max-w-[390px]"
         // loading="eager"
         // fetchPriority="high"
         // priority
