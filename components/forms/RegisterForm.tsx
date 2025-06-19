@@ -52,6 +52,13 @@ const RegisterForm = ({user}: {user:User}) => {
           </p>
         </section>
 
+         <section className="space-y-4">
+        
+          <h2 className="text-dark-300 dark:text-dark-700 sub-header">
+           Personal Information
+          </h2>
+        </section>
+
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           name="name"
