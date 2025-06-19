@@ -90,7 +90,26 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
         </div>
 
-         <div className="flex flex-col gap-6 xl:flex-row">
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.DATE_PICKER}
+            name="birthdate"
+            label="Date of Birth:"
+            placeholder="Select your birthdate"
+            control={form.control}
+          
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.SKELETON}
+            name="gender"
+            label="Gender:"
+            placeholder="(555) 123-4355"
+            control={form.control}
+          />
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             name="email"
@@ -109,31 +128,6 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
           />
         </div>
-
-
-
-
- <div className="flex flex-col gap-6 xl:flex-row">
-          <CustomFormField
-            fieldType={FormFieldType.INPUT}
-            name="email"
-            label="Email:"
-            placeholder="janedoe@gmail.com"
-            control={form.control}
-            iconSrc="/assets/icons/email.svg"
-            iconAlt="Email Icon"
-          />
-
-          <CustomFormField
-            fieldType={FormFieldType.PHONE_INPUT}
-            name="phone"
-            label="Phone Number:"
-            placeholder="(555) 123-4355"
-            control={form.control}
-          />
-        </div>
-
-
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
       </form>
