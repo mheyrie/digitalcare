@@ -12,9 +12,7 @@ import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 
-
-
-const RegisterForm = ({user}: {user:User}) => {
+const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,31 +42,52 @@ const RegisterForm = ({user}: {user:User}) => {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-12 flex-1"
+      >
         <section className="space-y-4">
-          <h1 className="header">Welcome, Happy to have you here  </h1>
+          <h1 className="header">Welcome, Happy to have you here </h1>
           <p className="text-dark-300 dark:text-dark-700">
-           Let us know a bit about you to get started
+            Let us know a bit about you to get started
           </p>
         </section>
 
-         <section className="space-y-4">
-        <div className="mb-9 space-y-1"></div>
+        <section className="space-y-4">
+          <div className="mb-9 space-y-1"></div>
           <h2 className="text-dark-300 dark:text-dark-700 sub-header">
-           Personal Information
+            Personal Information
           </h2>
         </section>
 
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           name="name"
-          label="Full name:"
           placeholder="Enter your full name"
           control={form.control}
           iconSrc="/assets/icons/user.svg"
           iconAlt="User Icon"
         />
 
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            name="email"
+            label="Email:"
+            placeholder="janedoe@gmail.com"
+            control={form.control}
+            iconSrc="/assets/icons/email.svg"
+            iconAlt="Email Icon"
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.PHONE_INPUT}
+            name="phone"
+            label="Phone Number:"
+            placeholder="(555) 123-4355"
+            control={form.control}
+          />
+        </div>
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
       </form>
