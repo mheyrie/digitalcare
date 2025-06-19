@@ -63,6 +63,7 @@ const RegisterForm = ({ user }: { user: User }) => {
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           name="name"
+          label="Full Name:"
           placeholder="Enter your full name"
           control={form.control}
           iconSrc="/assets/icons/user.svg"
@@ -88,6 +89,51 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
           />
         </div>
+
+         <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            name="email"
+            label="Email:"
+            placeholder="janedoe@gmail.com"
+            control={form.control}
+            iconSrc="/assets/icons/email.svg"
+            iconAlt="Email Icon"
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.PHONE_INPUT}
+            name="phone"
+            label="Phone Number:"
+            placeholder="(555) 123-4355"
+            control={form.control}
+          />
+        </div>
+
+
+
+
+ <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            name="email"
+            label="Email:"
+            placeholder="janedoe@gmail.com"
+            control={form.control}
+            iconSrc="/assets/icons/email.svg"
+            iconAlt="Email Icon"
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.PHONE_INPUT}
+            name="phone"
+            label="Phone Number:"
+            placeholder="(555) 123-4355"
+            control={form.control}
+          />
+        </div>
+
+
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
       </form>
