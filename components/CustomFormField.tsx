@@ -41,6 +41,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     placeholder,
     showTimeSelect,
     dateFormat,
+    renderSkeleton,
   } = props;
   switch (fieldType) {
     case FormFieldType.INPUT:
@@ -94,10 +95,14 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
               onChange={(date) => field.onChange(date)}
               showTimeSelect={showTimeSelect ?? false}
               dateFormat={dateFormat ?? "MM/dd/yyyy"}
+              timeInputLabel="Time:"
+              wrapperClassName="date-picker"
             />
           </FormControl>
         </div>
       );
+    case FormFieldType.SKELETON:
+      return renderSkeleton ? renderSkeleton(field) : null;
     default:
       break;
   }
