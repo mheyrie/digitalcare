@@ -15,6 +15,8 @@ import Image from "next/image";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { E164Number } from "libphonenumber-js/core";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface CustomProps {
   control: Control<any>;
@@ -79,15 +81,13 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
             height={24}
             className="ml-2"
           />
+          <FormControl>
+            <DatePicker
+              selected={field.value}
+              onChange={(date) => field.onChange(date)}
+            />
+          </FormControl>
         </div>
-        // <FormControl>
-        //   <Input
-        //     type="date"
-        //     placeholder={placeholder}
-        //     {...field}
-        //     className="shad-input border-0"
-        //   />
-        // </FormControl>
       );
     default:
       break;
