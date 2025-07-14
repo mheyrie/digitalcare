@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup } from "@radix-ui/react-radio-group";
+import { GenderOptions } from "@/constants";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -149,7 +150,9 @@ const RegisterForm = ({ user }: { user: User }) => {
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
-                  {[{label: 'male'}]}
+                  {GenderOptions.map((option) => (
+                    <div key={option} className="radio-group"></div>
+                  ))}
                 </RadioGroup>
               </FormControl>
             )}
