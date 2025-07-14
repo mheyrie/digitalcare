@@ -85,6 +85,8 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
             <DatePicker
               selected={field.value}
               onChange={(date) => field.onChange(date)}
+showTimeSelect={props.showTimeSelect}
+
             />
           </FormControl>
         </div>
