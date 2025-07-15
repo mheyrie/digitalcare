@@ -14,6 +14,9 @@ import { FormFieldType } from "./PatientForm";
 import { GenderOptions } from "@/constants";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
+import { SelectItem } from "../ui/select";
+import Image from "next/image";
+import Doctors from "@/constants/index";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -217,13 +220,20 @@ const RegisterForm = ({ user }: { user: User }) => {
           placeholder="Select a physician"
           control={form.control}
         >
-        [Doctors.map((doctor)=>{
-<SelectItem key={doctor.name} value={doctor.name}>
-
-</SelectItem>
-        })]
-         </CustomFormField>
-
+          {Doctors.map((doctor) => {
+            <SelectItem key={doctor.name} value={doctor.name}>
+              <div className="flex cursor-pointe item-center gap-2">
+                <Image
+                  src={doctor.image}
+                  alt={doctor.name}
+                  width={24}
+                  height={24}
+                  className="rounded-full"
+                />
+              </div>
+            </SelectItem>;
+          })}
+        </CustomFormField>
 
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
