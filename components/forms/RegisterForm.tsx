@@ -184,7 +184,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
         </div>
         <div className="flex flex-col gap-6 xl:flex-row">
-            <CustomFormField
+          <CustomFormField
             fieldType={FormFieldType.INPUT}
             name="emergencyContactName"
             label="Emergency Contact:"
@@ -209,6 +209,18 @@ const RegisterForm = ({ user }: { user: User }) => {
             Medical Information
           </h2>
         </section>
+
+        <CustomFormField
+          fieldType={FormFieldType.SELECT}
+          name="primaryPhysician"
+          label="Primary Physician:"
+          placeholder="Select a physician"
+          control={form.control}
+        >
+        []
+         </CustomFormField>
+
+
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
