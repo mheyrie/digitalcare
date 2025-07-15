@@ -194,7 +194,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.INPUT}
             name="emergencyContactName"
             label="Emergency Contact:"
-            placeholder="emergency"
+            placeholder="Guardian's Name"
             control={form.control}
             iconSrc="/assets/icons/email.svg"
             iconAlt="emergency Icon"
