@@ -217,7 +217,11 @@ const RegisterForm = ({ user }: { user: User }) => {
           placeholder="Select a physician"
           control={form.control}
         >
-        []
+        [Doctors.map((doctor)=>{
+<SelectItem key={doctor.name} value={doctor.name}>
+
+</SelectItem>
+        })]
          </CustomFormField>
 
 
