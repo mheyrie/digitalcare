@@ -173,7 +173,10 @@ const RegisterForm = ({ user }: { user: User }) => {
             Medical Information
           </h2>
         </section>
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+
+          
+        </div>
         <div className="flex flex-col gap-6 xl:flex-row"></div>
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
