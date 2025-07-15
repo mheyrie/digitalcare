@@ -165,12 +165,6 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
         </div>
 
-        <section className="space-y-4">
-          <div className="mb-9 space-y-1"></div>
-          <h2 className="text-dark-300 dark:text-dark-700 sub-header">
-            Medical Information
-          </h2>
-        </section>
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
             fieldType={FormFieldType.INPUT}
@@ -202,12 +196,19 @@ const RegisterForm = ({ user }: { user: User }) => {
 
           <CustomFormField
             fieldType={FormFieldType.PHONE_INPUT}
-            name="phone"
-            label="Phone Number:"
+            name="emergencyContactNumber"
+            label="Emergency Contact Number:"
             placeholder="(555) 123-4355"
             control={form.control}
           />
         </div>
+
+        <section className="space-y-4">
+          <div className="mb-9 space-y-1"></div>
+          <h2 className="text-dark-300 dark:text-dark-700 sub-header">
+            Medical Information
+          </h2>
+        </section>
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
