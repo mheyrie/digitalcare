@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +17,7 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
-import Doctors from "@/constants/index";
+import Doctors from "@/constants";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -220,15 +221,15 @@ const RegisterForm = ({ user }: { user: User }) => {
           placeholder="Select a physician"
           control={form.control}
         >
-          {Doctors.map((doctor) => {
+          {Doctors.map((doctor:any) => {
             <SelectItem key={doctor.name} value={doctor.name}>
               <div className="flex cursor-pointe item-center gap-2">
                 <Image
                   src={doctor.image}
                   alt={doctor.name}
-                  width={24}
-                  height={24}
-                  className="rounded-full"
+                  width={32}
+                  height={32}
+                  className="rounded-full border border-dark-500"
                 />
               </div>
             </SelectItem>;
