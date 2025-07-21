@@ -12,12 +12,11 @@ import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
-import { GenderOptions } from "@/constants";
+import { Doctors, GenderOptions } from "@/constants";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
-import Doctors from "@/constants";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -221,7 +220,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           placeholder="Select a physician"
           control={form.control}
         >
-          {Doctors.map((doctor:any) => {
+          {Doctors.map((doctor: any) => (
             <SelectItem key={doctor.name} value={doctor.name}>
               <div className="flex cursor-pointe item-center gap-2">
                 <Image
@@ -232,8 +231,8 @@ const RegisterForm = ({ user }: { user: User }) => {
                   className="rounded-full border border-dark-500"
                 />
               </div>
-            </SelectItem>;
-          })}
+            </SelectItem>
+          ))}
         </CustomFormField>
 
         <div className="flex flex-col gap-6 xl:flex-row"></div>
