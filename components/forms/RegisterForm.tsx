@@ -230,6 +230,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                   height={32}
                   className="rounded-full border border-dark-500"
                 />
+                <p className="">{doctor.name}</p>
               </div>
             </SelectItem>
           ))}
