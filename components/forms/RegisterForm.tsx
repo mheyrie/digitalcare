@@ -109,8 +109,12 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.SKELETON}
             name="gender"
             label="Gender:"
-            placeholder="(555) 123-4355"
             control={form.control}
+           renderSkeleton={(field)=>(
+            <FormControl>
+              <RadioGroup className="flex h-11 gap-6 xl:justify-between" onValueChange={field.onChange}></RadioGroup>
+            </FormControl>
+           )}
           />
         </div>
 
