@@ -112,7 +112,14 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
            renderSkeleton={(field)=>(
             <FormControl>
-              <RadioGroup className="flex h-11 gap-6 xl:justify-between" onValueChange={field.onChange}></RadioGroup>
+              <RadioGroup className="flex h-11 gap-6 xl:justify-between" onValueChange={field.onChange} defaultValue={field.value}>
+                {GenderOptions.map((option)=>(
+                  <div className="radio-group" key={option}>
+                    <RadioGroupItem value={option} id={option}/>
+                    <Label ></Label>
+                  </div>
+                ))}
+              </RadioGroup>
             </FormControl>
            )}
           />
