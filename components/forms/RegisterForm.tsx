@@ -223,18 +223,36 @@ const RegisterForm = ({ user }: { user: User }) => {
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             name="insurancePreview"
-            label="insurance provider:"
+            label="Insurance Provider:"
             placeholder="BlueCross BlueShield"
             control={form.control}
-            iconAlt="Address Icon"
+          
           />
           <CustomFormField
             fieldType={FormFieldType.INPUT}
-            name="occupation"
-            label="Occupation:"
-            placeholder="Software Engineer"
+            name="insurancePolicyNumber"
+            label="Insurance Policy Number:"
+            placeholder="ABC1234567890"
             control={form.control}
-            iconAlt="Occupation Icon"
+            
+          />
+        </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            name="allergies"
+            label="Allergies (if any):"
+            placeholder="Peanuts, Pollen, Penicillin"
+            control={form.control}
+           
+          />
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            name="currentMedication"
+            label="Current Medication (if any):"
+            placeholder="Ibuprofen 200mg, Paracetamol 500mg"
+            control={form.control}
+           
           />
         </div>
 
