@@ -98,35 +98,6 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
-            fieldType={FormFieldType.DATE_PICKER}
-            name="birthdate"
-            label="Date of Birth:"
-            placeholder="Select your birthdate"
-            control={form.control}
-          />
-
-          <CustomFormField
-            fieldType={FormFieldType.SKELETON}
-            name="gender"
-            label="Gender:"
-            control={form.control}
-           renderSkeleton={(field)=>(
-            <FormControl>
-              <RadioGroup className="flex h-11 gap-6 xl:justify-between" onValueChange={field.onChange} defaultValue={field.value}>
-                {GenderOptions.map((option)=>(
-                  <div className="radio-group" key={option}>
-                    <RadioGroupItem value={option} id={option}/>
-                    <Label htmlFor={option} className="cursor-point">{option}</Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </FormControl>
-           )}
-          />
-        </div>
-
-        <div className="flex flex-col gap-6 xl:flex-row">
-          <CustomFormField
             fieldType={FormFieldType.INPUT}
             name="email"
             label="Email:"
@@ -197,6 +168,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             iconAlt="Occupation Icon"
           />
         </div>
+
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
             fieldType={FormFieldType.INPUT}
@@ -247,7 +219,24 @@ const RegisterForm = ({ user }: { user: User }) => {
           ))}
         </CustomFormField>
 
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            name="insurancePreview"
+            label="insurance provider:"
+            placeholder="BlueCross BlueShield"
+            control={form.control}
+            iconAlt="Address Icon"
+          />
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            name="occupation"
+            label="Occupation:"
+            placeholder="Software Engineer"
+            control={form.control}
+            iconAlt="Occupation Icon"
+          />
+        </div>
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
       </form>
