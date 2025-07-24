@@ -96,7 +96,7 @@
 
   /* ==== FORM */
   .radio-group {
-    @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
+    @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 dark:bg-dark-400 p-3 bg-slate-200 ;
   }
 
   .checkbox-label {
@@ -283,6 +283,19 @@
   align-items: center;
 }
 
+/* .react-datepicker,
+.react-datepicker__time,
+.react-datepicker__header,
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker-time__header {
+  background-color: #1a1d21 !important;
+  border-color: #363a3d !important;
+  color: #abb8c4 !important;
+} */
+
+/* Default (light theme) styles */
 .react-datepicker,
 .react-datepicker__time,
 .react-datepicker__header,
@@ -290,6 +303,19 @@
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker-time__header {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+/* Dark theme styles */
+.dark .react-datepicker,
+.dark .react-datepicker__time,
+.dark .react-datepicker__header,
+.dark .react-datepicker__current-month,
+.dark .react-datepicker__day-name,
+.dark .react-datepicker__day,
+.dark .react-datepicker-time__header {
   background-color: #1a1d21 !important;
   border-color: #363a3d !important;
   color: #abb8c4 !important;
@@ -312,7 +338,14 @@
 }
 
 .react-datepicker__input-container input {
-  background-color: #1a1d21 !important;
+  background-color: #d6d8da !important;
+  width: 100%;
+  outline: none;
+}
+
+.dark 
+.react-datepicker__input-container input{
+    background-color: #1a1d21 !important;
   width: 100%;
   outline: none;
 }
