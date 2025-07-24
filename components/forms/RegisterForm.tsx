@@ -191,7 +191,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                   alt={doctor.name}
                   width={32}
                   height={32}
-                  className="rounded-full border border-dark-500"
+                  className="rounded-full border dark:border-dark-500 border-dark-700"
                 />
                 <p className="">{doctor.name}</p>
               </div>
@@ -206,7 +206,6 @@ const RegisterForm = ({ user }: { user: User }) => {
             label="Insurance Provider:"
             placeholder="BlueCross BlueShield"
             control={form.control}
-          
           />
           <CustomFormField
             fieldType={FormFieldType.INPUT}
@@ -214,7 +213,6 @@ const RegisterForm = ({ user }: { user: User }) => {
             label="Insurance Policy Number:"
             placeholder="ABC1234567890"
             control={form.control}
-            
           />
         </div>
         <div className="flex flex-col gap-6 xl:flex-row">
@@ -224,7 +222,6 @@ const RegisterForm = ({ user }: { user: User }) => {
             label="Allergies (if any):"
             placeholder="Peanuts, Pollen, Penicillin"
             control={form.control}
-           
           />
           <CustomFormField
             fieldType={FormFieldType.TEXTAREA}
@@ -232,7 +229,6 @@ const RegisterForm = ({ user }: { user: User }) => {
             label="Current Medication (if any):"
             placeholder="Ibuprofen 200mg, Paracetamol 500mg"
             control={form.control}
-           
           />
         </div>
 
