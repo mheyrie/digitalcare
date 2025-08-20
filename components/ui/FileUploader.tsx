@@ -20,7 +20,9 @@ type FileUploaderProps = {
       <input {...getInputProps()} />
       {files && files.length > 0 ? (
        <Image src={convertFileToUrl(files[0])} alt="Uploaded file" width={1000} height={1000} className="max-h-[400px] overflow-hidden object-cover" />
-      ) : null}
+      ) : <>
+      <Image src="/assets/icons/upload.svg" alt="Upload Icon" width={400} height={400} className="max-h-[400px] overflow-hidden object-cover" />
+      </>}
       {isDragActive ? (
         <p>Drop the files here ...</p>
       ) : (
