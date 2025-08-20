@@ -17,6 +17,7 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
+import FileUploader from "../ui/FileUploader";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -278,25 +279,12 @@ const RegisterForm = ({ user }: { user: User }) => {
  <CustomFormField
             fieldType={FormFieldType.SKELETON}
             control={form.control}
-            name="gender"
-            label="Gender:"
+            name="identificationDocument"
+            label="Scanned copy of Identification Document:"
             renderSkeleton={(field) => (
               <FormControl>
-                <RadioGroup
-                  className="flex h-11 gap-6 xl:justify-between"
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  {GenderOptions.map((option) => (
-                    <div key={option} className="radio-group">
-                      <RadioGroupItem value={option} id={option} className="" />
-                      <Label htmlFor={option} className="cursor-pointer">
-                        {option}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              </FormControl>
+                <FileUploader />
+                </FormControl>
             )}
           />
 
