@@ -254,8 +254,6 @@ const RegisterForm = ({ user }: { user: User }) => {
           </h2>
         </section>
 
-
-
         <CustomFormField
           fieldType={FormFieldType.SELECT}
           name="identificationType"
@@ -265,11 +263,42 @@ const RegisterForm = ({ user }: { user: User }) => {
         >
           {IdentificationTypes.map((type) => (
             <SelectItem key={type} value={type}>
-              
+              {type}
             </SelectItem>
           ))}
         </CustomFormField>
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          name="identificationNumber"
+          label="Identification Number:"
+          placeholder="12345566788"
+          control={form.control}
+        />
 
+ <CustomFormField
+            fieldType={FormFieldType.SKELETON}
+            control={form.control}
+            name="gender"
+            label="Gender:"
+            renderSkeleton={(field) => (
+              <FormControl>
+                <RadioGroup
+                  className="flex h-11 gap-6 xl:justify-between"
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  {GenderOptions.map((option) => (
+                    <div key={option} className="radio-group">
+                      <RadioGroupItem value={option} id={option} className="" />
+                      <Label htmlFor={option} className="cursor-pointer">
+                        {option}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </FormControl>
+            )}
+          />
 
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
