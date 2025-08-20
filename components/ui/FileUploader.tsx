@@ -13,7 +13,7 @@ type FileUploaderProps = {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     onChange(acceptedFiles);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
     <div {...getRootProps()} className="file-upload">
@@ -29,11 +29,7 @@ type FileUploaderProps = {
         <p className="text-12-regular text-gray-500">Supported formats: JPG, PNG, GIF(max 800*400)</p>
       </div>
       </>}
-      {isDragActive ? (
-        <p>Drop the files here ...</p>
-      ) : (
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      )}
+      
     </div>
   );
 };
