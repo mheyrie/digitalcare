@@ -12,7 +12,7 @@ import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
-import { Doctors, GenderOptions } from "@/constants";
+import { Doctors, GenderOptions, IdentificationTypes } from "@/constants";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
@@ -231,7 +231,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
           />
         </div>
-<div className="flex flex-col gap-6 xl:flex-row">
+        <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
             fieldType={FormFieldType.TEXTAREA}
             name="familyMedicalHistory"
@@ -247,6 +247,31 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
           />
         </div>
+        <section className="space-y-4">
+          <div className="mb-9 space-y-1"></div>
+          <h2 className="text-dark-300 dark:text-dark-700 sub-header">
+            Identification and Verification
+          </h2>
+        </section>
+
+
+
+        <CustomFormField
+          fieldType={FormFieldType.SELECT}
+          name="identificationType"
+          label="Identification Type:"
+          placeholder="Select an identification type"
+          control={form.control}
+        >
+          {IdentificationTypes.map((type) => (
+            <SelectItem key={type} value={type}>
+              
+            </SelectItem>
+          ))}
+        </CustomFormField>
+
+
+
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
       </form>
     </Form>
