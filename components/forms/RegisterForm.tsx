@@ -276,18 +276,45 @@ const RegisterForm = ({ user }: { user: User }) => {
           control={form.control}
         />
 
- <CustomFormField
-            fieldType={FormFieldType.SKELETON}
-            control={form.control}
-            name="identificationDocument"
-            label="Scanned copy of Identification Document:"
-            renderSkeleton={(field) => (
-              <FormControl>
-                <FileUploader />
-                </FormControl>
-            )}
-          />
+        <CustomFormField
+          fieldType={FormFieldType.SKELETON}
+          control={form.control}
+          name="identificationDocument"
+          label="Scanned copy of Identification Document:"
+          renderSkeleton={(field) => (
+            <FormControl>
+              <FileUploader
+                files={field.value}
+                onChange={(files) => field.onChange(files)}
+              />
+            </FormControl>
+          )}
+        />
 
+        <section className="space-y-4">
+          <div className="mb-9 space-y-1"></div>
+          <h2 className="text-dark-300 dark:text-dark-700 sub-header">
+            Consent and Privacy
+          </h2>
+        </section>
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          name="treatmentConsent"
+          label="I consent to treatment"
+          control={form.control}
+        />
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          name="disclosureConsent"
+          label="I consent to the disclosure of my medical information"
+          control={form.control}
+        />
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          name="privacyConsent"
+          label="I consent to the processing of my personal data"
+          control={form.control}
+        />
 
         <SubmitButton isLoading={isLoading}> Get 💃Started</SubmitButton>
       </form>
