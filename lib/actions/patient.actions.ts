@@ -28,8 +28,10 @@ export const createUser = async (user: CreateUserParams) => {
     return parseStringify(newUser);
   } catch (error: any) {
     if (error && error?.code === 409) {
-      const documents = await users.list([Query.equal("email", [user.email])]);
-      return documents?.users[0];
+      const existingUser = await users.list([
+        Query.equal("email", [user.email]),
+      ]);
+      return existingUser?.users[0];
     }
   }
 };
@@ -53,11 +55,19 @@ export const registerPatient = async ({
     if (identificationDocument) {
       const inputFile = InputFile.fromBuffer(
         identificationDocument?.get("blobFile") as Blob,
-        identificationDocument?.get("name") as string
+        identificationDocument?.get("fileName") as string
       );
+
+      // const blob = identificationDocument?.get("blobFile") as Blob;
+      // const buffer = Buffer.from(await blob.arrayBuffer());
+      // const inputFile = InputFile.fromBuffer(
+      //   buffer,
+      //   identificationDocument?.get("fileName") as string
+      // );
 
       file = await storage.createFile(BUCKET_ID!, ID.unique(), inputFile);
     }
+
     const newPatient = await databases.createDocument(
       DATABASE_ID!,
       PATIENT_COLLECTION_ID!,
@@ -71,5 +81,6 @@ export const registerPatient = async ({
     return parseStringify(newPatient);
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };

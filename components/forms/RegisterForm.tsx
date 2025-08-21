@@ -10,7 +10,7 @@ import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import {  registerPatient } from "@/lib/actions/patient.actions";
+import { registerPatient } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import {
   Doctors,
@@ -23,7 +23,6 @@ import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import FileUploader from "../FileUploader";
-
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -43,7 +42,9 @@ const RegisterForm = ({ user }: { user: User }) => {
   // Define a submit handler.
   async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
     setIsLoading(true);
+
     let formData;
+
     if (
       values.identificationDocument &&
       values.identificationDocument.length > 0
@@ -61,14 +62,16 @@ const RegisterForm = ({ user }: { user: User }) => {
         ...values,
         userId: user.$id,
         birthDate: new Date(values.birthDate),
-        IdentificationDocument: formData,
+        identificationDocument: formData,
       };
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-expect-error
+      //@ts-ignore
       const patient = await registerPatient(patientData);
       if (patient) router.push(`/patients/${user.$id}/new-appointment`);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.log("Error submitting form:", error);
+      throw error;
+
     } finally {
       setIsLoading(false);
     }
