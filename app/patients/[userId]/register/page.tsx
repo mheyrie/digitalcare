@@ -2,15 +2,14 @@ import RegisterForm from "@/components/forms/RegisterForm";
 import { ModeToggle } from "@/components/ModeToggle";
 import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
-import Link from "next/link";
 
-const Register = async ({params: {userId}}: SearchParamProps) => {
-  const user = await getUser(userId)
+
+const Register = async ({ params: { userId } }: SearchParamProps) => {
+  const user = await getUser(userId);
   return (
-   <div className="flex h-screen max-h-screen">
-    
+    <div className="flex h-screen max-h-screen">
       <ModeToggle />
-      <section className="remove-scrollbar container ">
+      <section className="remove-scrollbar container">
         <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
           {/* Logo  */}
           <div className="flex mb-12">
@@ -24,19 +23,19 @@ const Register = async ({params: {userId}}: SearchParamProps) => {
             <span className="text-sm italic mt-2 font-semibold">We Care</span>
           </div>
           {/* Form  */}
-          <RegisterForm user = {user}/>
+          <RegisterForm user={user} />
 
-          <div className="text-14-regular mt-20 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              © {new Date().getFullYear()} We Care. All rights reserved.
-            </p>
+          <p className="copyright py-12">
+            © {new Date().getFullYear()} We Care. All rights reserved.
+          </p>
+          {/* <div className="text-14-regular mt-20 flex justify-between">
             <Link
               href="/?admin=true"
               className="text-green-600 dark:text-green-300"
             >
               Admin
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
       <Image
@@ -44,7 +43,7 @@ const Register = async ({params: {userId}}: SearchParamProps) => {
         height={1000}
         src="/assets/images/register-img.png"
         alt="patient onboarding"
-        className="side-img max-w-[390px]"
+        className="side-img max-w-[490px]"
         // loading="eager"
         // fetchPriority="high"
         // priority
