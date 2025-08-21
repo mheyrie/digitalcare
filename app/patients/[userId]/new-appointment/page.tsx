@@ -1,19 +1,16 @@
-
-import AppointmentForm from "@/components/forms/AppointmentForm"
-import { ModeToggle } from "@/components/ModeToggle"
+import AppointmentForm from "@/components/forms/AppointmentForm";
+import { ModeToggle } from "@/components/ModeToggle";
 import { getPatient } from "@/lib/actions/patient.actions";
-import Image from "next/image"
+import Image from "next/image";
 
-
-const NewAppointment = async ({params:{userId}}: SearchParamProps) => {
+const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
   const patient = await getPatient(userId);
 
   return (
-   <div className="flex h-screen max-h-screen">
-
+    <div className="flex h-screen max-h-screen">
       <ModeToggle />
-      <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[860px] flex-1 justify-between">
+      <section className="remove-scrollbar  container my-auto">
+        <div className="sub-container max-w-[660px] flex-1 justify-between">
           {/* Logo  */}
           <div className="flex mb-12">
             <Image
@@ -27,16 +24,16 @@ const NewAppointment = async ({params:{userId}}: SearchParamProps) => {
           </div>
 
           {/* Form  */}
-          <AppointmentForm 
-          type="create" userId = {userId}
+          <AppointmentForm
+            type="create"
+            userId={userId}
+            patientId={patient.$id}
           />
 
-           <p className="justify-items-end text-dark-600 xl:text-left">
-              © {new Date().getFullYear()} We Care. All rights reserved.
-            </p>
-           
-          </div>
-        
+          <p className="justify-items-end text-dark-600 xl:text-left">
+            © {new Date().getFullYear()} We Care. All rights reserved.
+          </p>
+        </div>
       </section>
       <Image
         width={1000}
@@ -49,6 +46,6 @@ const NewAppointment = async ({params:{userId}}: SearchParamProps) => {
         priority
       />
     </div>
-  )
-}
-export default NewAppointment
+  );
+};
+export default NewAppointment;
