@@ -34,20 +34,45 @@ const AppointmentForm = ({
       primaryPhysician: "",
       schedule: new Date(),
       reason: "",
-      notes: "",
-    cancellationReason: "",
+      note: "",
+      cancellationReason: "",
     },
   });
 
   // Define a submit handler.
   async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
-    const { name, email, phone } = values;
     setIsLoading(true);
+
+    let status;
+
+    switch (type) {
+      case "schedule":
+        status = "scheduled";
+        break;
+      case "cancel":
+        status = "cancelled";
+        break;
+     default:
+        status = "pending";
+        break;
+
+   
+    }
+
     try {
-      const userData = { name, email, phone };
-      const user = await createUser(userData);
-      if (user) router.push(`/patients/${user.$id}/register`);
-      setIsLoading(false);
+      if(type==='create' && patientId){
+        const appointmentData ={
+            userId,
+            patient: patientId,
+            primaryPhysician: values.primaryPhysician,
+            schedule: new Date(values.schedule),
+            reason: values.note,
+            status: status as Status,
+            note: values.note,
+        }
+      }
+
+      const appointment = await createAppointment(appointmentData)
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -150,7 +175,6 @@ const AppointmentForm = ({
             type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"
           } w-full`}
         >
-        
           {buttonLabel}
         </SubmitButton>
       </form>
