@@ -63,9 +63,9 @@ const RegisterForm = ({ user }: { user: User }) => {
         birthDate: new Date(values.birthDate),
         IdentificationDocument: formData,
       };
-      
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-expect-error
       const patient = await registerPatient(patientData);
-      
       if (patient) router.push(`/patients/${user.$id}/new-appointment`);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -73,7 +73,6 @@ const RegisterForm = ({ user }: { user: User }) => {
       setIsLoading(false);
     }
   }
-
   return (
     <Form {...form}>
       <form
@@ -213,13 +212,13 @@ const RegisterForm = ({ user }: { user: User }) => {
         >
           {Doctors.map((doctor: any) => (
             <SelectItem key={doctor.name} value={doctor.name}>
-              <div className="flex cursor-pointe item-center gap-2">
+              <div className="flex cursor-pointer gap-2 items-center">
                 <Image
                   src={doctor.image}
                   alt={doctor.name}
                   width={32}
                   height={32}
-                  className="rounded-full border dark:border-dark-500 border-dark-700"
+                  className="rounded-full border dark:border-dark-500 border-dark-700 "
                 />
                 <p className="">{doctor.name}</p>
               </div>

@@ -28,14 +28,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
           <p className="copyright py-12">
             © {new Date().getFullYear()} We Care. All rights reserved.
           </p>
-          {/* <div className="text-14-regular mt-20 flex justify-between">
-            <Link
-              href="/?admin=true"
-              className="text-green-600 dark:text-green-300"
-            >
-              Admin
-            </Link>
-          </div> */}
+  
         </div>
       </section>
       <Image
