@@ -1,10 +1,19 @@
- "use server"
+"use server";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ID, Query } from "node-appwrite";
-import { users } from "../appwrite.config";
+import {
+  BUCKET_ID,
+  DATABASE_ID,
+  databases,
+  ENDPOINT,
+  PATIENT_COLLECTION_ID,
+  PROJECT_ID,
+  storage,
+  users,
+} from "../appwrite.config";
 import { parseStringify } from "../utils";
-import {InputFile} from "node-appwrite/file";
+import { InputFile } from "node-appwrite/file";
 
 export const createUser = async (user: CreateUserParams) => {
   try {
@@ -35,16 +44,31 @@ export const getUser = async (userId: string) => {
   }
 };
 
-export const registerPatient = async ({identificationDocument, ...patient}: RegisterUserParams) => {
+export const registerPatient = async ({
+  identificationDocument,
+  ...patient
+}: RegisterUserParams) => {
   try {
     let file;
-    if(identificationDocument){
+    if (identificationDocument) {
       const inputFile = InputFile.fromBuffer(
         identificationDocument?.get("blobFile") as Blob,
         identificationDocument?.get("name") as string
-      )
+      );
+
+      file = await storage.createFile(BUCKET_ID!, ID.unique(), inputFile);
     }
+    const newPatient = await databases.createDocument(
+      DATABASE_ID!,
+      PATIENT_COLLECTION_ID!,
+      ID.unique(),
+      {
+        identificationDocumentId: file?.$id || null,
+        identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${PROJECT_ID}`, ...patient
+      }
+    );
+    return parseStringify(newPatient);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
