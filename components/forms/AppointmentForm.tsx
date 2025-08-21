@@ -22,7 +22,7 @@ const AppointmentForm = ({
 }: {
   userId: string;
   patientId: string;
-  type: "create" | "cancel";
+  type: "create" | "cancel" | "schedule";
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +39,7 @@ const AppointmentForm = ({
 
   // Define a submit handler.
   async function onSubmit(values: z.infer<typeof UserFormValidation>) {
-    const { name, email, phone } = values; // TODO: continue here
+    const { name, email, phone } = values;
     setIsLoading(true);
     try {
       const userData = { name, email, phone };
@@ -50,6 +50,21 @@ const AppointmentForm = ({
       console.error("Error submitting form:", error);
     }
     console.log(values);
+  }
+
+  let buttonLabel;
+  switch (type) {
+    case "cancel":
+      buttonLabel = "Cancel Appointment";
+      break;
+    case "create":
+      buttonLabel = "Create Appointment";
+      break;
+    case "schedule":
+      buttonLabel = "Schedule Appointment";
+      break;
+    default:
+      break;
   }
 
   return (
@@ -133,8 +148,8 @@ const AppointmentForm = ({
             type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"
           } w-full`}
         >
-          {" "}
-          Get Started
+        
+          {buttonLabel}
         </SubmitButton>
       </form>
     </Form>
