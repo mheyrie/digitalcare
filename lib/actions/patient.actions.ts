@@ -64,7 +64,8 @@ export const registerPatient = async ({
       ID.unique(),
       {
         identificationDocumentId: file?.$id || null,
-        identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${PROJECT_ID}`, ...patient
+        identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${PROJECT_ID}`,
+        ...patient,
       }
     );
     return parseStringify(newPatient);

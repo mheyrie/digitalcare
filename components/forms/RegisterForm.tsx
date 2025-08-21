@@ -10,7 +10,7 @@ import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import { createUser } from "@/lib/actions/patient.actions";
+import {  registerPatient } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import {
   Doctors,
@@ -23,7 +23,7 @@ import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import FileUploader from "../FileUploader";
-import { register } from "module";
+
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -60,11 +60,12 @@ const RegisterForm = ({ user }: { user: User }) => {
       const patientData = {
         ...values,
         userId: user.$id,
-        birthDate: new Date(values.birthDate).toISOString(),
+        birthDate: new Date(values.birthDate),
         IdentificationDocument: formData,
       };
-
+      
       const patient = await registerPatient(patientData);
+      
       if (patient) router.push(`/patients/${user.$id}/new-appointment`);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -72,6 +73,7 @@ const RegisterForm = ({ user }: { user: User }) => {
       setIsLoading(false);
     }
   }
+
   return (
     <Form {...form}>
       <form
