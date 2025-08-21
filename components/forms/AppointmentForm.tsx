@@ -7,7 +7,7 @@ import { Form } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
-import { UserFormValidation } from "@/lib/validation";
+import { AppointmentFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
@@ -28,17 +28,19 @@ const AppointmentForm = ({
   const [isLoading, setIsLoading] = useState(false);
 
   // Define your form.
-  const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+  const form = useForm<z.infer<typeof AppointmentFormValidation>>({
+    resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
+      primaryPhysician: "",
+      schedule: new Date(),
+      reason: "",
+      notes: "",
+    cancellationReason: "",
     },
   });
 
   // Define a submit handler.
-  async function onSubmit(values: z.infer<typeof UserFormValidation>) {
+  async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
     const { name, email, phone } = values;
     setIsLoading(true);
     try {
@@ -123,7 +125,7 @@ const AppointmentForm = ({
 
               <CustomFormField
                 fieldType={FormFieldType.TEXTAREA}
-                name="notes"
+                name="note"
                 label="Notes"
                 placeholder="Enter notes"
                 control={form.control}

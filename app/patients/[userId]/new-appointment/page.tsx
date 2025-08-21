@@ -30,8 +30,8 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
             patientId={patient.$id}
           />
 
-          <p className="justify-items-end text-dark-600 xl:text-left">
-            © {new Date().getFullYear()} We Care. All rights reserved.
+          <p className="copyright mt-10 py-12">
+            © {new Date().getFullYear()} <span className="text-sm underline">We Care.</span>  All rights reserved.
           </p>
         </div>
       </section>
