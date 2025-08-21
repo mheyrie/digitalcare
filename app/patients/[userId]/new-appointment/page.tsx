@@ -1,10 +1,13 @@
 
 import AppointmentForm from "@/components/forms/AppointmentForm"
 import { ModeToggle } from "@/components/ModeToggle"
+import { getPatient } from "@/lib/actions/patient.actions";
 import Image from "next/image"
 
 
-const NewAppointment = () => {
+const NewAppointment = async ({params:{userId}}: SearchParamProps) => {
+  const patient = await getPatient(userId);
+
   return (
    <div className="flex h-screen max-h-screen">
 
@@ -24,7 +27,9 @@ const NewAppointment = () => {
           </div>
 
           {/* Form  */}
-          <AppointmentForm />
+          <AppointmentForm 
+          type="create" userId = {userId}
+          />
 
            <p className="justify-items-end text-dark-600 xl:text-left">
               © {new Date().getFullYear()} We Care. All rights reserved.

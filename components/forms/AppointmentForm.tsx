@@ -10,16 +10,8 @@ import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
+import { FormFieldType } from "./PatientForm";
 
-export enum FormFieldType {
-  INPUT = "input",
-  TEXTAREA = "textarea",
-  PHONE_INPUT = "phoneInput",
-  CHECKBOX = "checkbox",
-  SELECT = "select",
-  DATE_PICKER = "datePicker",
-  SKELETON = "skeleton",
-}
 
 const AppointmentForm = () => {
   const router = useRouter();
@@ -53,9 +45,9 @@ const AppointmentForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
         <section className="mb-12 space-y-4">
-          <h1 className="header">Hi There 👋👋🏼</h1>
+          <h1 className="header">New Appointment</h1>
           <p className="text-dark-300 dark:text-dark-700">
-            Schedule your first appointment
+           Request new appointment in 10 seconds or less. Just fill out the form below and we will get back to you as soon as possible.
           </p>
         </section>
 
