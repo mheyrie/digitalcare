@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
 import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
+import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -53,9 +55,27 @@ const SuccessPage = async ({
               height={100}
               width={100}
             />
-            <p className="">March 15, 2023 at 10:00 AM</p>
+            <p className="white-space-nowrap">Dr {doctor?.name}</p>
+          </div>
+          <div className="flex gap-2">
+            <Image
+              src="/assets/icons/calendar.svg"
+              alt="Calendar"
+              className="h-6 w-6"
+              height={24}
+              width={24}
+            />
+            <p className="white-space-nowrap">
+              {formatDateTime(appointment.schedule).dateTime}
+            </p>
           </div>
         </section>
+        <Button variant="outline" className="shad-primary-btn" asChild>
+          <Link href={`/patients/${userId}/new-appointment`}>
+            New Appointment
+          </Link>
+        </Button>
+        <p className="copyright"> ©{new Date().getFullYear()}</p>
       </div>
     </div>
   );
