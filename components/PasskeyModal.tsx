@@ -2,7 +2,6 @@
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -15,6 +14,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { encryptKey } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -28,6 +28,19 @@ const PasskeyModal = () => {
   const closeModal = () => {
     setOpen(false);
     router.push("/");
+  };
+
+  const validatePasskey = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+      const encryptedKey = encryptKey(passkey);
+      localStorage.setItem("accessKey", encryptedKey);
+      setOpen(false);
+    } else {
+      setError("Invalid passkey");
+    }
   };
 
   return (
@@ -50,7 +63,11 @@ const PasskeyModal = () => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="">
-          <InputOTP maxLength={6} value={passkey} onChange={(value) => setPasskey(value)}>
+          <InputOTP
+            maxLength={6}
+            value={passkey}
+            onChange={(value) => setPasskey(value)}
+          >
             <InputOTPGroup className="shad-otp">
               <InputOTPSlot className="shad-otp-slot" index={0} />
               <InputOTPSlot className="shad-otp-slot" index={1} />
@@ -60,15 +77,19 @@ const PasskeyModal = () => {
               <InputOTPSlot className="shad-otp-slot" index={5} />
             </InputOTPGroup>
           </InputOTP>
-            {error && (
-                <p className="shad-error  text-sm mt-4 flex justify-center">
-                {error}
-                </p>
-            )}
+          {error && (
+            <p className="shad-error  text-sm mt-4 flex justify-center">
+              {error}
+            </p>
+          )}
         </div>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogAction
+            className="shad-primary-btn w-full"
+            onClick={(e) => validatePasskey(e)}
+          >
+            Enter Admin Passkey
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
