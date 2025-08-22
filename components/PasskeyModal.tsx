@@ -16,14 +16,29 @@ import {
 } from "@/components/ui/input-otp";
 import { encryptKey } from "@/lib/utils";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const PasskeyModal = () => {
   const router = useRouter();
+  const path = usePathname();
   const [open, setOpen] = useState(true);
   const [passkey, setPasskey] = useState("");
   const [error, setError] = useState("");
+
+  const encryptedKey = typeof window !== "undefined" ? window.localStorage.getItem("accessKey") : null;
+
+  useEffect(() => {
+    if (path) {
+       if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+      const encryptedKey = encryptKey(passkey);
+      localStorage.setItem("accessKey", encryptedKey);
+      setOpen(false);
+    } else {
+      setError("Invalid passkey");
+    }
+    }
+  }, [encryptedKey]);
 
   const closeModal = () => {
     setOpen(false);
