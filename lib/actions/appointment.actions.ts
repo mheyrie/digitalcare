@@ -20,7 +20,7 @@ export const createAppointment = async (
       ID.unique(),
       appointment
     );
-
+    revalidatePath("/admin");
     return parseStringify(newAppointment);
   } catch (error) {
     console.log(error);
@@ -68,6 +68,16 @@ export const getRecentAppointmentList = async () => {
       initialCounts
     );
 
+    //     const counts = (appointments.documents as Appointment[]).reduce(
+    //   (acc, appointment) => {
+    //     if (appointment.status === "scheduled") acc.scheduledCount++;
+    //     else if (appointment.status === "pending") acc.pendingCount++;
+    //     else if (appointment.status === "cancelled") acc.cancelledCount++;
+    //     return acc;
+    //   },
+    //   { scheduledCount: 0, pendingCount: 0, cancelledCount: 0 }
+    // );
+
     const data = {
       totalCount: appointments.total,
       ...counts,
@@ -90,8 +100,7 @@ export const updateAppointment = async ({
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
       appointmentId,
-      appointment,
-      
+      appointment
     );
 
     if (!updatedAppointment) {

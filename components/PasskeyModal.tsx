@@ -26,17 +26,22 @@ const PasskeyModal = () => {
   const [passkey, setPasskey] = useState("");
   const [error, setError] = useState("");
 
-  const encryptedKey = typeof window !== "undefined" ? window.localStorage.getItem("accessKey") : null;
+  const encryptedKey =
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("accessKey")
+      : null;
 
   useEffect(() => {
     const accessKey = encryptedKey && decryptKey(encryptedKey);
+   
     if (path) {
-       if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
-      setOpen(false);
-      router.push("/admin");
-    } else {
-      setOpen(true);
-    }
+      if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+        setOpen(false);
+        router.push("/admin");
+      } else {
+        setOpen(true);
+      }
+      
     }
   }, [encryptedKey]);
 

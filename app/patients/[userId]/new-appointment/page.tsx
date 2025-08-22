@@ -32,7 +32,9 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
           />
 
           <p className="copyright mt-10 py-12">
-            © {new Date().getFullYear()} <span className="text-sm underline">We Care.</span>  All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <span className="text-sm underline">We Care.</span> All rights
+            reserved.
           </p>
         </div>
       </section>
