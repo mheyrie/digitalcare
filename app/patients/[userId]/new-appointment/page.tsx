@@ -3,7 +3,7 @@ import { ModeToggle } from "@/components/ModeToggle";
 import { getPatient } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 
-const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
+const NewAppointment = async ({ params: { userId} }: SearchParamProps) => {
   const patient = await getPatient(userId);
 
   return (
@@ -28,7 +28,6 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
             type="create"
             userId={userId}
             patientId={patient.$id}
-            // setOpen={() => {}}
           />
 
           <p className="copyright mt-10 py-12">

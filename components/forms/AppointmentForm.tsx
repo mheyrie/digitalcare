@@ -24,12 +24,12 @@ const AppointmentForm = ({
   patientId,
   type,
   appointment,
-  // setOpen,
+  setOpen,
 }: {
   userId: string;
   patientId: string;
   type: "create" | "cancel" | "schedule";
-  // setOpen: (open: boolean) => void;
+  setOpen?: (open: boolean) => void;
   appointment?: Appointment;
 }) => {
   const router = useRouter();
@@ -103,7 +103,7 @@ const AppointmentForm = ({
         };
         const updatedAppointment = await updateAppointment(appointmentToUpdate);
         if (updatedAppointment) {
-          // setOpen(false);
+          setOpen?.(false);
           form.reset();
         }
       }
