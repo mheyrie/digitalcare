@@ -42,14 +42,14 @@ export const getAppointment = async (appointmentId: string) => {
 };
 
 
-export const getRecentAppointment = async ()=>{
+export const getRecentAppointmentList = async ()=>{
   try {
     const appointments = await databases.listDocuments(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
       [Query.orderDesc('$createdAt')]
     );
-const initialCount = {
+const initialCounts = {
   scheduledCount: 0,
   pendingCount: 0,
   cancelledCount: 0,
@@ -64,9 +64,15 @@ const counts =(appointments.documents as Appointment[]).reduce((acc, appointment
       acc.cancelledCount += 1;
     }
     return acc;
-  }, initialCount);
-    return counts;
-    
+  }, initialCounts);
+
+  const data = {
+    totalCount :appointments.total,
+    ...counts,
+    documents: appointments.documents
+  }
+    return parseStringify(data);
+
   } catch (error) {
     console.log(error);
   }
