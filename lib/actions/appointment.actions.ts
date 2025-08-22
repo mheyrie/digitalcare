@@ -114,7 +114,7 @@ export const updateAppointment = async ({
       type === "schedule"
         ? `your appointment has been scheduled for ${formatDateTime(
             appointment.schedule
-          )}.`
+          ).dateTime} with Dr. ${appointment.primaryPhysician}.`
         : `We regret to inform you that your appointment has been cancelled. Reason ${
             appointment.cancellationReason || "not provided"
           }.`
