@@ -110,12 +110,17 @@ export const updateAppointment = async ({
 
     const smsMessage = `
     Hi, it's Digital care, 
-    ${type === 'schedule' 
-      ? `your appointment has been scheduled for ${formatDateTime(appointment.schedule)}.`
-      : `We regret to inform you that your appointment has been cancelled. Reason ${appointment.cancellationReason || 'not provided'}.`}
+    ${
+      type === "schedule"
+        ? `your appointment has been scheduled for ${formatDateTime(
+            appointment.schedule
+          )}.`
+        : `We regret to inform you that your appointment has been cancelled. Reason ${
+            appointment.cancellationReason || "not provided"
+          }.`
+    }
     `;
-await sendSMSNotification(userId, smsMessage);
-
+    await sendSMSNotification(userId, smsMessage);
 
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);
