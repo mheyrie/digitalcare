@@ -5,7 +5,7 @@ import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-const SuccessPage = async ({
+const Success= async ({
   params: { userId },
   searchParams,
 }: SearchParamProps) => {
@@ -80,4 +80,4 @@ const SuccessPage = async ({
     </div>
   );
 };
-export default SuccessPage;
+export default Success;

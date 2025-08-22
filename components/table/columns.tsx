@@ -8,10 +8,8 @@ import Image from "next/image";
 import AppointmentModal from "../AppointmentModal";
 import { Appointment } from "@/types/appwrite.types";
 
-
 export const columns: ColumnDef<Appointment>[] = [
   {
-    accessorKey: "id",
     header: "ID",
     cell: ({ row }) => {
       return <p className="text-14-md">{row.index + 1}</p>;
@@ -76,16 +74,12 @@ export const columns: ColumnDef<Appointment>[] = [
             patientId={data.patient.$id}
             userId={data.userId}
             appointment={data}
-            //   title="Schedule Appointment"
-            //   description="Please fill in the following details to schedule an appointment"
           />
           <AppointmentModal
             type="cancel"
             patientId={data.patient.$id}
             userId={data.userId}
             appointment={data}
-            //   title="Cancel Appointment"
-            //   description="Are you sure you want to cancel this appointment?"
           />
         </div>
       );
